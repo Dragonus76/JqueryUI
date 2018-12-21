@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="jquery/jquery-ui.js"></script>
+   <script src="jquery/jquery-ui.min.js"></script>
+
+	<title>exo</title>
+</head>
+<body>
+<div id="sortable">
+
+	<ul class="premiere">
+    <li>Élément 1</li>
+    <li>Élément 2</li>
+    <li>Élément 3</li>
+    <li>Élément 4</li>
+    <li>Élément 5</li>
+</ul>
+
+<ul class="seconde">
+    <li>Élément 1</li>
+    <li>Élément 2</li>
+    <li>Élément 3</li>
+    <li>Élément 4</li>
+    <li>Élément 5</li>
+</ul>
+
+</div>
+<script type="text/javascript">
+	
+
+
+	$('.premiere').sortable({
+    connectWith : '.seconde'
+});
+
+$('.seconde').sortable({
+    connectWith : '.premiere'
+});
+
+$('#sortable').sortable({
+    cursor : 'move' // le curseur prend l'apparence d'une icône de déplacement
+
+});
+
+
+
+$('#sortable').sortable({
+    connectWith : 'ul',
+    dropOnEmpty : false // on indique que le dépôt en zone vide est interdit
+});
+
+
+$('#sortable').sortable({
+    placeholder : '.ui-state-highlight',
+    forcePlaceholderSize : true // force le redimensionnement du placeholder
+});
+
+$('#sortable').sortable({
+    revert : true
+});
+
+$('#sortable').sortable({
+    opacity : 0.8, // réduit l'opacité lors du déplacement
+    grid : [10, 10] // magnétise le déplacement sur une grille de 10*10
+});
+
+$('#sortable').sortable({
+    receive : function(){
+        alert('Élément correctement réceptionné !');
+    }
+});
+
+</script>
+
+
+</body>
+</html>

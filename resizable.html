@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Resizable - Default functionality</title>
+
+  
+  <style>
+  #resizable { width: 150px; height: 150px; padding: 0.5em; background: pink;  }
+  #resizable h3 { text-align: center; margin: 0; background: yellow; }
+  #selection{ width: 200px; height: 300px; background: green; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="jquery/jquery-ui.js"></script>
+   <script src="jquery/jquery-ui.min.js"></script>
+
+  <script>
+  $( function() {
+    $('#resize').resizable({
+    aspectRatio : 16 / 9 // respect du ratio selon ces proportions
+});
+  } );
+
+  $('#selection').selectable({
+    stop : function(){
+        $('#resultat').empty(); // je vide mon bloc de réception, au cas où il contiendrait déjà des informations (vous pouviez aussi utiliser la méthode text())
+        $('.ui-selected').each(function(){
+            $('#resultat').append( $(this).text() + ' ; ' ); // j'ajoute les données dans mon bloc grâce à append()
+        });
+    }
+});
+  </script>
+</head>
+<body>
+  <div id="selection">
+
+  </div>
+ 
+<div id="resizable" class="ui-widget-content">
+  <h3 class="ui-widget-header">Resizable</h3>
+</div>
+ 
+ 
+</body>
+</html>
